@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class CoarseSyncBoard extends orderedBoard {
+public class CoarseSyncBoard extends OrderedBoard {
   private final Lock lock = new ReentrantLock();
 
   @Override
@@ -15,7 +15,7 @@ public class CoarseSyncBoard extends orderedBoard {
     } finally {
       lock.unlock();
     }
-  };
+  }
 
   @Override
   public boolean deleteMessage(Message message) {
@@ -25,7 +25,7 @@ public class CoarseSyncBoard extends orderedBoard {
     } finally {
       lock.unlock();
     }
-  };
+  }
 
   @Override
   public int size() {
@@ -35,7 +35,7 @@ public class CoarseSyncBoard extends orderedBoard {
     } finally {
       lock.unlock();
     }
-  };
+  }
 
   @Override
   public List<Message> getBoardSnapshot() {
@@ -45,5 +45,5 @@ public class CoarseSyncBoard extends orderedBoard {
     } finally {
       lock.unlock();
     }
-  };
+  }
 }

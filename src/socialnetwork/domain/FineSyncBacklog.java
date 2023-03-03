@@ -14,7 +14,8 @@ public class FineSyncBacklog implements Backlog {
   }
 
   private LockablePosition find(LockableNode start, int id) {
-    LockableNode<Task> prev, curr;
+    LockableNode<Task> prev;
+    LockableNode<Task> curr;
     prev = start;
     prev.lock();
     curr = start.getNxtNode();
@@ -33,7 +34,8 @@ public class FineSyncBacklog implements Backlog {
   public boolean add(Task task) {
     assert task != null;
     LockableNode<Task> newNode = new LockableNode(task);
-    LockableNode<Task> prev = null, curr = null;
+    LockableNode<Task> prev = null;
+    LockableNode<Task> curr = null;
     try {
       LockablePosition position = find(headNode, task.getId());
       prev = position.getPrev();

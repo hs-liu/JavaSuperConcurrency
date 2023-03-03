@@ -1,13 +1,11 @@
 package socialnetwork;
 
-import socialnetwork.domain.Board;
-import socialnetwork.domain.Message;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
+import socialnetwork.domain.Message;
 
 public class User extends Thread {
 

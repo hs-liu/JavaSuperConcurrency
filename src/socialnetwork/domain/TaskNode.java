@@ -1,10 +1,10 @@
 package socialnetwork.domain;
 
-public class taskNode<T> {
+public class TaskNode<T> {
   private T value;
-  private taskNode<T> nxtNode;
+  private TaskNode<T> nxtNode;
 
-  public taskNode (T value) {
+  public TaskNode(T value) {
     this.value = value;
     this.nxtNode = null;
   }
@@ -17,12 +17,11 @@ public class taskNode<T> {
     return this.value;
   }
 
-  public void setNxtNode(taskNode<T> nxtNode) {
+  public void setNxtNode(TaskNode<T> nxtNode) {
     this.nxtNode = nxtNode;
   }
 
-  public taskNode<T> getNxtNode() {
+  public TaskNode<T> getNxtNode() {
     return this.nxtNode;
   }
-
 }

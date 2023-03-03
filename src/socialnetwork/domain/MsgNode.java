@@ -1,23 +1,23 @@
 package socialnetwork.domain;
 
-public class msgNode<M> {
+public class MsgNode<M> {
   private M value;
   private int id;
-  private msgNode nxtNode;
+  private MsgNode nxtNode;
 
-  public msgNode (M value) {
+  public MsgNode(M value) {
     this(value, value.hashCode(), null);
   }
 
-  public msgNode (M value, int id) {
+  public MsgNode(M value, int id) {
     this(value, id, null);
   }
 
-  public msgNode (M value, msgNode nxtNode) {
+  public MsgNode(M value, MsgNode nxtNode) {
     this(value, value.hashCode(), nxtNode);
   }
 
-  public msgNode (M value, int id, msgNode nxtNode) {
+  public MsgNode(M value, int id, MsgNode nxtNode) {
     this.value = value;
     this.id = id;
     this.nxtNode = nxtNode;
@@ -40,12 +40,11 @@ public class msgNode<M> {
     return this.id;
   }
 
-  public void setNxtNode(msgNode nxtNode) {
+  public void setNxtNode(MsgNode nxtNode) {
     this.nxtNode = nxtNode;
   }
 
-  public msgNode<M> getNxtNode() {
+  public MsgNode<M> getNxtNode() {
     return this.nxtNode;
   }
-
 }

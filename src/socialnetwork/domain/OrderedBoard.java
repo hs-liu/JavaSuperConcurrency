@@ -3,31 +3,31 @@ package socialnetwork.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class orderedBoard implements Board {
-  private final msgNode<Message> headNode;
-  private final msgNode<Message> tailNode;
+public class OrderedBoard implements Board{
+  private final MsgNode<Message> headNode;
+  private final MsgNode<Message> tailNode;
   private int size = 0;
 
-  public orderedBoard() {
-    headNode = new msgNode<>(null, Integer.MIN_VALUE, null);
-    tailNode = new msgNode<>(null, Integer.MAX_VALUE, null);
+  public OrderedBoard() {
+    headNode = new MsgNode<>(null, Integer.MIN_VALUE, null);
+    tailNode = new MsgNode<>(null, Integer.MAX_VALUE, null);
     headNode.setNxtNode(tailNode);
   }
 
-  private positionNode<msgNode> find(msgNode<Message> start, int id) {
-    msgNode<Message> prevNode;
-    msgNode<Message> currNode = start;
+  private PositionNode<MsgNode> find(MsgNode<Message> start, int id) {
+    MsgNode<Message> prevNode;
+    MsgNode<Message> currNode = start;
     do {
       prevNode = currNode;
       currNode = currNode.getNxtNode();
     } while (currNode.getId() < id);
-    return new positionNode<>(prevNode, currNode);
+    return new PositionNode<>(prevNode, currNode);
   }
 
   @Override
   public boolean addMessage(Message message) {
-    msgNode<Message> newNode = new msgNode<>(message, message.getMessageId());
-    positionNode<msgNode> position = find(headNode, message.getMessageId());
+    MsgNode<Message> newNode = new MsgNode<>(message, message.getMessageId());
+    PositionNode<MsgNode> position = find(headNode, message.getMessageId());
     if (position.getCurr().getId() == message.getMessageId()) {
       return false;
     } else {
@@ -40,7 +40,7 @@ public class orderedBoard implements Board {
 
   @Override
   public boolean deleteMessage(Message message) {
-    positionNode<msgNode> position = find(headNode, message.getMessageId());
+    PositionNode<MsgNode> position = find(headNode, message.getMessageId());
     if (position.getCurr().getId() == message.getMessageId()) {
       position.getPrev().setNxtNode(position.getCurr().getNxtNode());
       size -= 1;
@@ -58,7 +58,7 @@ public class orderedBoard implements Board {
   @Override
   public List<Message> getBoardSnapshot() {
     List<Message> msgLst = new ArrayList<>();
-    msgNode<Message> currentNode = headNode.getNxtNode();
+    MsgNode<Message> currentNode = headNode.getNxtNode();
     while (currentNode.getId() != tailNode.getId()) {
       msgLst.add(0, currentNode.getValue());
       currentNode = currentNode.getNxtNode();

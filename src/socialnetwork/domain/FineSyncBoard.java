@@ -15,7 +15,8 @@ public class FineSyncBoard implements Board {
   }
 
   private LockablePosition find(LockableNode start, int id) {
-    LockableNode prev, curr;
+    LockableNode prev;
+    LockableNode curr;
     prev = start;
     prev.lock();
     curr = start.getNxtNode();
@@ -33,7 +34,8 @@ public class FineSyncBoard implements Board {
   public boolean addMessage(Message message) {
     assert message != null;
     LockableNode<Message> newNode = new LockableNode<>(message);
-    LockableNode prev = null, curr = null;
+    LockableNode prev = null;
+    LockableNode curr = null;
     try {
       LockablePosition position = find(headNode, message.getMessageId());
       prev = position.getPrev();
@@ -53,7 +55,8 @@ public class FineSyncBoard implements Board {
 
   @Override
   public boolean deleteMessage(Message message) {
-    LockableNode prev = null, curr = null;
+    LockableNode prev = null;
+    LockableNode curr = null;
     try {
       LockablePosition position = find(headNode, message.getMessageId());
       prev = position.getPrev();

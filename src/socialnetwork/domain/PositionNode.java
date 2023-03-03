@@ -1,10 +1,10 @@
 package socialnetwork.domain;
 
-public class positionNode<M> {
+public class PositionNode<M> {
   private final M prev;
   private final M curr;
 
-  public positionNode(M prev, M curr) {
+  public PositionNode(M prev, M curr) {
     this.prev = prev;
     this.curr = curr;
   }

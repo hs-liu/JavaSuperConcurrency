@@ -2,13 +2,12 @@ package socialnetwork.domain;
 
 import java.util.Optional;
 
-public class linkedBacklog implements Backlog {
-
-  private taskNode<Task> headNode;
-  private taskNode<Task> tailNode;
+public class LinkedBacklog implements Backlog {
+  private TaskNode<Task> headNode;
+  private TaskNode<Task> tailNode;
   private int size = 0;
 
-  public linkedBacklog() {
+  public LinkedBacklog() {
     headNode = null;
     tailNode = null;
   }
@@ -17,7 +16,7 @@ public class linkedBacklog implements Backlog {
   @Override
   public boolean add(Task task) {
     assert task != null;
-    taskNode<Task> newNode = new taskNode<>(task);
+    TaskNode<Task> newNode = new TaskNode<>(task);
     if (headNode == null) {
       headNode = newNode;
       tailNode = headNode;
@@ -31,7 +30,7 @@ public class linkedBacklog implements Backlog {
 
   @Override
   public Optional<Task> getNextTaskToProcess() {
-   if (headNode == null) {
+    if (headNode == null) {
       return Optional.empty();
     } else {
       Task result = headNode.getValue();
@@ -46,3 +45,4 @@ public class linkedBacklog implements Backlog {
     return size;
   }
 }
+

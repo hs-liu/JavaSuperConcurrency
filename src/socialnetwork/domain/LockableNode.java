@@ -22,6 +22,7 @@ public class LockableNode<T> {
     this.id = id;
     this.nxtNode = nxtNode;
   }
+
   public void lock() {
     lock.lock();
   }

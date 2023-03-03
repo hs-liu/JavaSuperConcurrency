@@ -4,7 +4,7 @@ import java.util.Optional;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class CoarseSyncBacklog extends linkedBacklog {
+public class CoarseSyncBacklog extends LinkedBacklog {
   private final Lock lock = new ReentrantLock();
 
   @Override
@@ -15,7 +15,7 @@ public class CoarseSyncBacklog extends linkedBacklog {
     } finally {
       lock.unlock();
     }
-  };
+  }
 
   @Override
   public Optional<Task> getNextTaskToProcess() {
@@ -25,7 +25,7 @@ public class CoarseSyncBacklog extends linkedBacklog {
     } finally {
       lock.unlock();
     }
-  };
+  }
 
   @Override
   public int numberOfTasksInTheBacklog() {
@@ -35,6 +35,5 @@ public class CoarseSyncBacklog extends linkedBacklog {
     } finally {
       lock.unlock();
     }
-  };
-
+  }
 }
